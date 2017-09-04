@@ -123,3 +123,86 @@
 # # print(list(deque(a, key=lambda d: (d['x'], d['y']))))
 # # print(list(deque(a, key=lambda d:d['x'])))
 # print(list(deque(a, key=lambda d:d['y'])))
+#1.11命名切片
+# record = '....................100 .......513.25 ..........'
+# cost = int(record[20:23])*float(record[31:37])
+# print(cost)
+# a1 = slice(20, 23)
+# a2 = slice(31, 37)
+# cost = int(record[a1])*float(record[a2])
+
+#1.12 序列中出现次数最多的元素
+# words = [ 'look', 'into', 'my', 'eyes', 'look', 'into', 'my', 'eyes', 'the', 'eyes', 'the', 'eyes',
+#           'the', 'eyes', 'not', 'around', 'the',
+#           'eyes', "don't", 'look', 'around',
+#           'the', 'eyes', 'look', 'into', 'my', 'eyes', "you're", 'under' ]
+# from collections import Counter
+# word_counts = Counter(words)
+# top_three = word_counts.most_common(3)
+# print(top_three)
+# print()
+
+#1.13 通过某个关键字排序一个字典列表
+# rows = [ {'fname': 'Brian', 'lname': 'Jones', 'uid': 1003},
+#          {'fname': 'David', 'lname': 'Beazley', 'uid': 1002},
+#          {'fname': 'John', 'lname': 'Cleese', 'uid': 1001},
+#          {'fname': 'Big', 'lname': 'Jones', 'uid': 1004} ]
+
+# from operator import itemgetter
+# rows_by_frame = sorted(rows, key=itemgetter('fname'))
+# rows_by_uid = sorted(rows, key=itemgetter('uid'))
+# print(rows_by_uid)
+# rows_by_fname = sorted(rows, key=lambda r: r['fname'])
+# print(rows_by_fname)
+
+#3.14 排序不支持
+# class User:
+#     def __init__(self, user_id):
+#         self.user_id = user_id
+#     def __repr__(self):
+#         return 'User({})'.format(self.user_id)
+#
+# def sort_notcompare():
+    # users = [User(23), User(3), User(99)]
+    # print(users)
+    # print(sorted(users, key=lambda u :u.user_id))
+# users = [User(23), User(3), User(99)]
+# from operator import attrgetter
+# a = sorted(users, key=attrgetter('user_id'))
+# a = sort_notcompare()
+
+#1.15 通过某个字段将记录分组
+# rows = [ {'address': '5412 N CLARK', 'date': '07/01/2012'},
+#          {'address': '5148 N CLARK', 'date': '07/04/2012'},
+#          {'address': '5800 E 58TH', 'date': '07/02/2012'},
+#          {'address': '2122 N CLARK', 'date': '07/03/2012'},
+#          {'address': '5645 N RAVENSWOOD', 'date': '07/02/2012'},
+#          {'address': '1060 W ADDISON', 'date': '07/02/2012'},
+#          {'address': '4801 N BROADWAY', 'date': '07/01/2012'},
+#          {'address': '1039 W GRANVILLE', 'date': '07/04/2012'},
+# ]
+# from operator import itemgetter
+# from itertools import groupby
+#
+# rows.sort(key=itemgetter('date'))
+# for data, items in groupby(rows, key=itemgetter('date')):
+#     print(data)
+    # for i in items:
+    #     print(' ', i)
+
+#1.16 过滤系列元素
+# mylist = [1, 4, -5, 10, -7, 2, 3, -1]
+# pos = (n for n in mylist if n >0)
+# print(pos)
+# for i in pos:
+#     print(i)
+
+# values = ['1', '2', '-3', '-', '4', 'N/A', '5']
+# def is_int (val):
+#     try:
+#         x = int(val)
+#         return True
+#     except ValueError:
+#         return False
+# ivals = list(filter(is_int, values))
+# print(ivals)
